@@ -32,6 +32,10 @@ gbb_stuff:
 Default_Handler:
   b Default_Handler
 
+.type Handler_SysTick, %function
+Handler_SysTick:
+  b SysTick_Handler
+
 .weak NMI_Handler
 .thumb_set NMI_Handler, Default_Handler
 
@@ -45,7 +49,7 @@ Default_Handler:
 .thumb_set PendSV_Handler, Default_Handler
 
 .weak SysTick_Handler
-.thumb_set SysTick_Handler, Default_Handler
+.thumb_set SysTick_Handler, Handler_SysTick
 
 .type reset_handler, %function
 reset_handler:
